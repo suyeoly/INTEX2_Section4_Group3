@@ -1,6 +1,7 @@
 using INTEX2_Section4_Group3.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using INTEX2_Section4_Group3.Areas.Identity.Data;
 
 namespace INTEX2_Section4_Group3
 {
@@ -11,14 +12,31 @@ namespace INTEX2_Section4_Group3
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            var identityConnectionString = builder.Configuration.GetConnectionString("IdentityConnection");
+
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseSqlite(connectionString));
+
+            // This line configures the INTEX2_Section4_Group3IdentityDbContext to use the IdentityConnection
+            builder.Services.AddDbContext<INTEX2_Section4_Group3IdentityDbContext>(options =>
+                options.UseSqlite(identityConnectionString)); // Assuming you are using SQL Server for the Identity
+
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                   .AddEntityFrameworkStores<INTEX2_Section4_Group3IdentityDbContext>();
+
             builder.Services.AddControllersWithViews();
+
+            var services = builder.Services;
+            var configuration = builder.Configuration;
+
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+            });
 
             var app = builder.Build();
 
