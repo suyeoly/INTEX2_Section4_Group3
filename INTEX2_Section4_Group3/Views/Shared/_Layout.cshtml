@@ -31,6 +31,21 @@
             </div>
         </nav>
     </header>
+    @if (!Context.Request.Cookies.ContainsKey("CookieConsent"))
+    {
+        <div id="cookieConsentBanner" class="alert alert-info text-center" role="alert">
+            This site uses cookies to offer you a better browsing experience.
+            <button onclick="hideCookieBanner()" class="btn btn-primary btn-sm">I understand</button>
+        </div>
+
+        <script>
+            function hideCookieBanner() {
+                document.getElementById('cookieConsentBanner').style.display = 'none';
+                document.cookie = "CookieConsent=true; path=/";
+            }
+        </script>
+    }
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

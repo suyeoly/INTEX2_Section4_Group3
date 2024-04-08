@@ -40,7 +40,7 @@ namespace INTEX2_Section4_Group3
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // Configure the HTTP request pipeline.s
             if (app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();
