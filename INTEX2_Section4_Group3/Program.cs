@@ -34,8 +34,8 @@ namespace INTEX2_Section4_Group3
 
             services.AddAuthentication().AddGoogle(googleOptions =>
             {
-                googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
-                googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+                googleOptions.ClientId = configuration["Authentication__Google__ClientId"];
+                googleOptions.ClientSecret = configuration["Authentication__Google__ClientSecret"];
             });
 
             var app = builder.Build();
