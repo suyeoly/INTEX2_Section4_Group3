@@ -2,6 +2,7 @@ using INTEX2_Section4_Group3.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using INTEX2_Section4_Group3.Areas.Identity.Data;
+using INTEX2_Section4_Group3.Models;
 
 namespace INTEX2_Section4_Group3
 {
@@ -15,7 +16,7 @@ namespace INTEX2_Section4_Group3
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             var identityConnectionString = builder.Configuration.GetConnectionString("IdentityConnection");
 
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            builder.Services.AddDbContext<LegoInfoContext>(options =>
                 options.UseSqlite(connectionString));
 
             // This line configures the INTEX2_Section4_Group3IdentityDbContext to use the IdentityConnection
