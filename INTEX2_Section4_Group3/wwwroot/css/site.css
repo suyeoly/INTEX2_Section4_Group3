@@ -20,3 +20,20 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+footer {
+    background-color: #697AC7; /* This is a Bootstrap dark background color, adjust the color to match the exact shade you need */
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+footer a {
+    color: #dcdcdc; /* Light grey color for links, adjust if needed */
+    text-decoration: none; /* Removes underline from links */
+}
+footer a:hover {
+     color: white; /* Color for link on hover */
+     text-decoration: underline; /* Adds underline on hover */
+     
+}

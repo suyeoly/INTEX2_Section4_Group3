@@ -1,5 +1,6 @@
 using INTEX2_Section4_Group3.Data;
 using INTEX2_Section4_Group3.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Microsoft.EntityFrameworkCore;
@@ -28,16 +29,19 @@ namespace INTEX2_Section4_Group3.Controllers
             return View();
         }
 
+      
         public IActionResult Privacy()
         {
             return View();
         }
 
+        [Authorize]
         public IActionResult Confirmation() // Assuming transactionId is passed to the method
         {
             return View();
         }
 
+        [Authorize]
         public IActionResult Fraudulent()
         {
             return View();

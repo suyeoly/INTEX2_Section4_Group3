@@ -59,6 +59,7 @@ namespace INTEX2_Section4_Group3
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.MapControllerRoute(
                 name: "default",
