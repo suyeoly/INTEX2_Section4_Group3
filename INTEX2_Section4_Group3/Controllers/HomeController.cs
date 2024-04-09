@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using SQLitePCL;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace INTEX2_Section4_Group3.Controllers
 {
@@ -36,7 +37,7 @@ namespace INTEX2_Section4_Group3.Controllers
         }
 
         [Authorize]
-        public IActionResult Confirmation() // Assuming transactionId is passed to the method
+        public IActionResult Confirmation()
         {
             return View();
         }

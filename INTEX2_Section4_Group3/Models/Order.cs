@@ -5,7 +5,7 @@ namespace INTEX2_Section4_Group3.Models;
 
 public partial class Order
 {
-    public double? TransactionId { get; set; }
+    public string? TransactionId { get; set; }
 
     public double? CustomerId { get; set; }
 
