@@ -25,6 +25,16 @@ namespace INTEX2_Section4_Group3.Controllers
         {
             return View();
         }
+
+        public IActionResult Shop()
+        {
+            return View();
+        }
+
+        public IActionResult Cart()
+        {
+            return View();
+        }
         public IActionResult About()
         {
             return View();
